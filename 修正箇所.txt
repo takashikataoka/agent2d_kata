@@ -1,0 +1,12 @@
+1.src/sample_player.cpp
+728行　Body_GoToPoint()　
+
+Body_GoToPoint( heard_pos,
+						0.5,
+								ServerParam::i().maxDashPower(),
+								50, true,false  //１行追加
+								).execute( this );
+2.src/bhv_basic_move.intercept_pos
+87行　Body_Intercept()
+
+Body_Intercept(false).execute( agent ); //falseを追加
