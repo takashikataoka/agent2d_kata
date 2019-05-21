@@ -174,7 +174,10 @@ evaluate_state( const PredictState & state )
     double point = state.ball().pos().x;
 
     point += std::max( 0.0,
-                       40.0 - ServerParam::i().theirTeamGoalPos().dist( state.ball().pos() ) );
+                       (
+                       40.0 - ServerParam::i().theirTeamGoalPos().dist( state.ball().pos() ) 
+                       ) * ( 2.0 - state.ball().pos().y/34.0)  // ボールを中央によせるようにする
+                    );
 
 #ifdef DEBUG_PRINT
     dlog.addText( Logger::ACTION_CHAIN,
