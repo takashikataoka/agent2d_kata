@@ -1,0 +1,19 @@
+diff --git a/src/sample_field_evaluator.cpp b/src/sample_field_evaluator.cpp
+index c6f5b1e..7ba5829 100644
+--- a/src/sample_field_evaluator.cpp
++++ b/src/sample_field_evaluator.cpp
+@@ -174,7 +174,10 @@ evaluate_state( const PredictState & state )
+     double point = state.ball().pos().x;
+ 
+     point += std::max( 0.0,
+-                       40.0 - ServerParam::i().theirTeamGoalPos().dist( state.ball().pos() ) );
++                       (
++                       40.0 - ServerParam::i().theirTeamGoalPos().dist( state.ball().pos() ) 
++                       ) * ( 2.0 - state.ball().pos().y/34.0)  // ボールを中央によせるようにする
++                    );
+ 
+ #ifdef DEBUG_PRINT
+     dlog.addText( Logger::ACTION_CHAIN,
+diff --git a/src/sample_player b/src/sample_player
+index be7456a..85408f2 100755
+Binary files a/src/sample_player and b/src/sample_player differ
