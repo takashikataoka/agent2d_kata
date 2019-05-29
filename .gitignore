@@ -1,4 +1,5 @@
 /.vscode/
 *.o
 /html/
-*.html
+/src/html/
+
